@@ -28,6 +28,7 @@ echo $INSTALL_VERSION_OPTION
 export BUN_INSTALL=$BUILD_DIR/.heroku
 export BUN_DIR=$BUILD_DIR/.heroku/cache
 curl -fsSL https://bun.sh/install | bash $INSTALL_VERSION_OPTION
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # set environment variables
 PROFILE_PATH="$BUILD_DIR/.profile.d/bun.sh"
@@ -36,3 +37,8 @@ echo 'export PATH="$HOME/.heroku/bin:$PATH"' >> $PROFILE_PATH
 echo 'export BUN_DIR="$HOME/.heroku/cache"' >> $PROFILE_PATH
 
 set +e
+
+# download dependencies
+cd $BUILD_DIR
+echo 'Installing Dependencies'
+bun install
