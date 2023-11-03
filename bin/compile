@@ -42,3 +42,8 @@ set +e
 cd $BUILD_DIR
 echo 'Installing Dependencies'
 bun install
+
+# build
+echo 'Building'
+bun run build 
+
